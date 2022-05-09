@@ -1,0 +1,31 @@
+<form [formGroup]="cadastroForm" (ngSubmit)="publicsubmitForm()">
+  <label>Formulario De Testes Reativo</label>
+  <br />
+  <label>Nome</label>
+  <br />
+  <input type="text" formControlName="firstName" required />
+  <span class="alert" *ngIf="cadastroForm.get('firstName')?.errors">COLOQUE O NOME</span>
+  <br />
+
+  <br />
+  <label>Sobrenome</label>
+  <br />
+  <input type="text" formControlName="lastName" maxlength="5"/>
+  <h2 *ngIf="cadastroForm.get('lastName')?.errors">NÃO E PERMITIDO MENOS DE 5 LETRAS</h2>
+  <br />
+    
+
+  <br />
+  <br />
+
+  {{ cadastroForm.get("firstName")?.errors | json }}
+
+  {{ cadastroForm.get("lastName")?.errors | json }}
+
+  <br />
+  <p>É valido: {{ cadastroForm.valid }}</p>
+  <p>Já foi sujo: {{ cadastroForm.dirty }}</p>
+  <br />
+  <br />
+  <button [disabled]="cadastroForm.invalid">Enviar</button>
+</form>
